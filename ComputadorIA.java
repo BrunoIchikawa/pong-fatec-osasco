@@ -1,3 +1,14 @@
+/*
+ * SETIMO ARQUIVO: O COMPUTADOR
+ * A inteligencia artificial aqui e uma regra simples, sem aprendizado.
+ * Comparo o meio da bola com o meio da raquete e escolho subir, descer ou parar.
+ * A tolerancia e uma pequena distancia em que a raquete ja pode ficar parada.
+ * Isso evita que ela fique tremendo para tentar alinhar o centro exatamente.
+ * No facil, anda 3 pixels por atualizacao e aceita distancia menor que 25.
+ * No dificil, anda 6 pixels e aceita distancia menor que 8.
+ * O sinal de interrogacao escolhe entre dois valores: dificil ? 6 : 3 significa
+ * usar 6 quando dificil for verdadeiro e usar 3 no outro caso.
+ */
 public class ComputadorIA {
     private boolean dificil;
 

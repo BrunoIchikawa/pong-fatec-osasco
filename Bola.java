@@ -2,6 +2,16 @@ import java.awt.Graphics2D;
 import java.awt.Rectangle;
 import java.util.concurrent.ThreadLocalRandom;
 
+/*
+ * QUINTO ARQUIVO: A BOLA
+ * x e y guardam a posicao do canto da bola. O diametro define seu tamanho.
+ * dx e quanto ela anda para os lados; dy e quanto ela anda para cima ou para baixo.
+ * Na tela, y menor fica mais alto. Por isso dy negativo faz a bola subir.
+ * mover soma essas velocidades a posicao. inverterX e inverterY trocam o sinal,
+ * fazendo a bola voltar na direcao contraria depois de um contato.
+ * private protege os dados: outras classes usam os metodos para trabalhar com a bola.
+ * Os metodos get permitem consultar esses valores.
+ */
 public class Bola {
     private double x;
     private double y;
@@ -31,7 +41,7 @@ public class Bola {
         // As coordenadas representam o canto. Desconto meio diametro para centralizar a bola.
         x = centroX - diametro / 2.0;
         y = centroY - diametro / 2.0;
-        // Cada saque recupera o modulo inicial e sorteia o lado e a inclinacao.
+        // Cada saque recupera a velocidade inicial e sorteia o lado e a inclinacao.
         dx = ThreadLocalRandom.current().nextBoolean() ? velocidadeInicial : -velocidadeInicial;
         dy = ThreadLocalRandom.current().nextDouble(-velocidadeInicial, velocidadeInicial);
     }

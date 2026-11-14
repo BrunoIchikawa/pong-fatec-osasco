@@ -1,6 +1,15 @@
 import java.awt.Graphics2D;
 import java.awt.Rectangle;
 
+/*
+ * SEXTO ARQUIVO: AS RAQUETES
+ * A mesma classe cria duas raquetes independentes: uma humana e uma do computador.
+ * x fica fixo. y muda conforme a direcao escolhida e a velocidade da raquete.
+ * Os comandos escolhem a direcao. mover aplica essa escolha uma vez por atualizacao.
+ * Math.min pega o menor valor e Math.max pega o maior. Juntos, eles mantem y
+ * entre zero e a altura do campo menos a altura da raquete.
+ * Assim a raquete inteira permanece dentro da tela.
+ */
 public class Raquete {
     private final int x;
     private int y;

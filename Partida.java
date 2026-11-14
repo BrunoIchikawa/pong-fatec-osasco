@@ -1,6 +1,14 @@
 import java.awt.Rectangle;
 
-// A regra fica aqui. A janela e os testes passam pelos mesmos contatos e pontos.
+/*
+ * QUARTO ARQUIVO: AS REGRAS
+ * A partida recebe os mesmos objetos criados pelo campo e trabalha com eles.
+ * Ela nao abre janela. Assim conseguimos testar as regras sem mostrar a tela.
+ * atualizar faz uma rodada curta: le os comandos, move os objetos, verifica
+ * os contatos e confere se alguem marcou ponto.
+ * Estado indica se estamos JOGANDO ou se ja houve VITORIA.
+ * As constantes guardam valores fixos: campo de 800 por 600 e meta de 9 pontos.
+ */
 public class Partida {
     public static final int LARGURA = 800;
     public static final int ALTURA = 600;
@@ -56,6 +64,9 @@ public class Partida {
     }
 
     private void rebater(Raquete raquete, boolean esquerda) {
+        // getRectangle cria a area retangular de cada objeto.
+        // intersects verifica se essas areas se sobrepoem, ou seja, se houve contato.
+        // dx negativo significa esquerda; positivo significa direita.
         // O contato so rebate se a bola estiver chegando nesta raquete.
         if ((esquerda ? bola.getDx() < 0 : bola.getDx() > 0)
                 && bola.getRectangle().intersects(raquete.getRectangle())) {
@@ -67,6 +78,8 @@ public class Partida {
     }
 
     private void concluirPonto() {
+        // Sair pela esquerda da ponto ao computador; pela direita, ao jogador.
+        // Este metodo recebe o placar ja atualizado e prepara o proximo saque.
         // O saque central encerra esta saida lateral e impede contar o mesmo ponto outra vez.
         bola.reiniciar(LARGURA / 2, ALTURA / 2);
         if (placar.getPontosJogador() >= META || placar.getPontosComputador() >= META) {
@@ -79,6 +92,7 @@ public class Partida {
     }
 
     public void reiniciar() {
+        // ESPACO chega ate aqui pelo CampoJogo. Nenhum timer novo e criado neste caminho.
         // Reutilizo as entidades e restauro o inicio. A dificuldade escolhida permanece.
         placar.reiniciar();
         bola.reiniciar(LARGURA / 2, ALTURA / 2);

@@ -1,4 +1,13 @@
-// Cada cenario entra direto na logica. Nenhuma janela participa destas verificacoes.
+/*
+ * ULTIMO ARQUIVO: OS TESTES
+ * Cada teste prepara uma situacao conhecida, faz uma acao e confere o resultado.
+ * Por exemplo: a bola sobe contra o teto; depois da atualizacao ela deve descer.
+ * conferir recebe uma condicao. Se ela for falsa, o teste para e mostra a falha.
+ * Nenhuma janela e aberta. Testamos diretamente os objetos e as regras da partida.
+ * O total e 133 verificacoes, incluindo 100 saques para conferir os limites
+ * das velocidades sorteadas. Isso nao significa 133 tipos diferentes de teste.
+ * Os testes passam pela mesma regra usada durante o jogo.
+ */
 public class PongLogicTest {
     private static int total;
 

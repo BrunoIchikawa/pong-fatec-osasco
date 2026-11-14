@@ -15,7 +15,18 @@ import javax.swing.JPanel;
 import javax.swing.KeyStroke;
 import javax.swing.Timer;
 
-// O estado da partida fica nos objetos em memoria. Aqui nao salvo o painel por serializacao.
+/*
+ * TERCEIRO ARQUIVO: O CAMPO E OS COMANDOS
+ * JPanel e uma area de desenho do Java. Nosso campo herda essa base.
+ * Aqui criamos uma bola, duas raquetes, um placar e a regra da partida.
+ * Ter esses objetos dentro do campo e o exemplo de composicao do projeto.
+ * ActionListener permite receber os avisos do timer pelo metodo actionPerformed.
+ * O timer chama esse metodo a cada 16 milissegundos, aproximadamente 60 vezes
+ * por segundo. Ele atualiza o jogo e pede para desenhar a tela de novo.
+ * As teclas pressionadas ficam em um conjunto, sem repetir a mesma tecla.
+ * A tela inicial espera ESPACO. D escolhe a dificuldade antes do inicio.
+ * O aviso serial e ignorado porque este painel nao salva partidas em arquivo.
+ */
 @SuppressWarnings("serial")
 public final class CampoJogo extends JPanel implements ActionListener {
     private static final long serialVersionUID = 1L;
@@ -56,6 +67,8 @@ public final class CampoJogo extends JPanel implements ActionListener {
     }
 
     private void associar(String tecla, boolean pressionar) {
+        // InputMap liga a tecla a um nome. ActionMap liga esse nome ao que deve acontecer.
+        // Registrar pressionar e soltar permite andar continuamente e parar na hora certa.
         String nome = (pressionar ? "pressed " : "released ") + tecla;
         getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW).put(KeyStroke.getKeyStroke(nome), nome);
         getActionMap().put(nome, new AbstractAction() {
@@ -98,6 +111,8 @@ public final class CampoJogo extends JPanel implements ActionListener {
 
     @Override
     protected void paintComponent(Graphics graphics) {
+        // Este metodo apenas desenha. Mover a bola aqui faria o jogo depender do desenho.
+        // super limpa o desenho anterior; Graphics2D oferece cores, linhas e texto.
         super.paintComponent(graphics);
         // Trabalho em uma copia para manter as configuracoes de desenho dentro deste metodo.
         Graphics2D g = (Graphics2D) graphics.create();
@@ -135,6 +150,7 @@ public final class CampoJogo extends JPanel implements ActionListener {
     }
 
     private void centralizar(Graphics2D g, String texto, int y) {
+        // Desconto a largura do texto da largura do campo e divido a sobra entre os lados.
         g.drawString(texto, (Partida.LARGURA - g.getFontMetrics().stringWidth(texto)) / 2, y);
     }
 }
