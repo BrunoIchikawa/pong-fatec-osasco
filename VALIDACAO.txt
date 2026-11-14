@@ -1,0 +1,9 @@
+Validacao em 14/11/2026
+JDK: Microsoft OpenJDK 21.0.13.0.2
+Compilacao local: javac -Xlint:all -Werror *.java
+Codigo compilacao: 0
+Avisos: nenhum
+Teste headless: 0
+[OK] Todos os 133 testes passaram.
+
+Revisao: apenas comentarios alterados; instrucoes Java preservadas.

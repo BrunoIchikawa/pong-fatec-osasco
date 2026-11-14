@@ -1,0 +1,6 @@
+*.java text eol=lf
+*.md text eol=lf
+*.json text eol=lf
+*.txt text eol=lf
+TDD-vermelho.log binary
+* text=auto eol=lf

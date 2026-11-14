@@ -1,0 +1,142 @@
+PongLogicTest.java:22: error: cannot find symbol
+    private static Partida criar(Bola bola) {
+                                 ^
+  symbol:   class Bola
+  location: class PongLogicTest
+PongLogicTest.java:22: error: cannot find symbol
+    private static Partida criar(Bola bola) {
+                   ^
+  symbol:   class Partida
+  location: class PongLogicTest
+PongLogicTest.java:23: error: cannot find symbol
+        return new Partida(bola, new Raquete(30, 250, 20, 100, 6, 600),
+                   ^
+  symbol:   class Partida
+  location: class PongLogicTest
+PongLogicTest.java:23: error: cannot find symbol
+        return new Partida(bola, new Raquete(30, 250, 20, 100, 6, 600),
+                                     ^
+  symbol:   class Raquete
+  location: class PongLogicTest
+PongLogicTest.java:24: error: cannot find symbol
+                new Raquete(750, 250, 20, 100, 3, 600), new Placar());
+                    ^
+  symbol:   class Raquete
+  location: class PongLogicTest
+PongLogicTest.java:24: error: cannot find symbol
+                new Raquete(750, 250, 20, 100, 3, 600), new Placar());
+                                                            ^
+  symbol:   class Placar
+  location: class PongLogicTest
+PongLogicTest.java:28: error: cannot find symbol
+        Bola bola = new Bola(390, 1, 20, 4, -4);
+        ^
+  symbol:   class Bola
+  location: class PongLogicTest
+PongLogicTest.java:28: error: cannot find symbol
+        Bola bola = new Bola(390, 1, 20, 4, -4);
+                        ^
+  symbol:   class Bola
+  location: class PongLogicTest
+PongLogicTest.java:29: error: cannot find symbol
+        Partida partida = criar(bola);
+        ^
+  symbol:   class Partida
+  location: class PongLogicTest
+PongLogicTest.java:35: error: cannot find symbol
+        bola = new Bola(390, 579, 20, 4, 4);
+                   ^
+  symbol:   class Bola
+  location: class PongLogicTest
+PongLogicTest.java:40: error: cannot find symbol
+        bola = new Bola(51, 290, 20, -4, 1);
+                   ^
+  symbol:   class Bola
+  location: class PongLogicTest
+PongLogicTest.java:46: error: cannot find symbol
+        bola = new Bola(729, 290, 20, 4, 1);
+                   ^
+  symbol:   class Bola
+  location: class PongLogicTest
+PongLogicTest.java:51: error: cannot find symbol
+        bola = new Bola(-16, 100, 20, -4, 1);
+                   ^
+  symbol:   class Bola
+  location: class PongLogicTest
+PongLogicTest.java:58: error: cannot find symbol
+        bola = new Bola(796, 100, 20, 4, 1);
+                   ^
+  symbol:   class Bola
+  location: class PongLogicTest
+PongLogicTest.java:64: error: cannot find symbol
+        bola = new Bola(-15, 100, 20, -4, 1);
+                   ^
+  symbol:   class Bola
+  location: class PongLogicTest
+PongLogicTest.java:69: error: cannot find symbol
+        Placar placar = new Placar();
+        ^
+  symbol:   class Placar
+  location: class PongLogicTest
+PongLogicTest.java:69: error: cannot find symbol
+        Placar placar = new Placar();
+                            ^
+  symbol:   class Placar
+  location: class PongLogicTest
+PongLogicTest.java:75: error: cannot find symbol
+        Raquete raquete = new Raquete(750, 250, 20, 100, 3, 600);
+        ^
+  symbol:   class Raquete
+  location: class PongLogicTest
+PongLogicTest.java:75: error: cannot find symbol
+        Raquete raquete = new Raquete(750, 250, 20, 100, 3, 600);
+                              ^
+  symbol:   class Raquete
+  location: class PongLogicTest
+PongLogicTest.java:76: error: cannot find symbol
+        ComputadorIA ia = new ComputadorIA();
+        ^
+  symbol:   class ComputadorIA
+  location: class PongLogicTest
+PongLogicTest.java:76: error: cannot find symbol
+        ComputadorIA ia = new ComputadorIA();
+                              ^
+  symbol:   class ComputadorIA
+  location: class PongLogicTest
+PongLogicTest.java:77: error: cannot find symbol
+        ia.atualizar(new Bola(390, 300, 20, 4, 1), raquete);
+                         ^
+  symbol:   class Bola
+  location: class PongLogicTest
+PongLogicTest.java:80: error: cannot find symbol
+        ia.atualizar(new Bola(390, 500, 20, 4, 1), raquete);
+                         ^
+  symbol:   class Bola
+  location: class PongLogicTest
+PongLogicTest.java:84: error: cannot find symbol
+        ia.atualizar(new Bola(390, 500, 20, 4, 1), raquete);
+                         ^
+  symbol:   class Bola
+  location: class PongLogicTest
+PongLogicTest.java:87: error: cannot find symbol
+        ia.atualizar(new Bola(390, 309, 20, 4, 1), raquete);
+                         ^
+  symbol:   class Bola
+  location: class PongLogicTest
+PongLogicTest.java:101: error: cannot find symbol
+            bola = new Bola(jogadorVence ? 796 : -16, 100, 20, jogadorVence ? 4 : -4, 1);
+                       ^
+  symbol:   class Bola
+  location: class PongLogicTest
+PongLogicTest.java:108: error: package Partida does not exist
+            conferir(partida.getEstado() == Partida.Estado.VITORIA, "Nono ponto encerra a partida");
+                                                   ^
+PongLogicTest.java:118: error: package Partida does not exist
+            conferir(partida.getEstado() == Partida.Estado.JOGANDO
+                                                   ^
+PongLogicTest.java:126: error: cannot find symbol
+        bola = new Bola(390, 290, 20, 4, 1);
+                   ^
+  symbol:   class Bola
+  location: class PongLogicTest
+29 errors

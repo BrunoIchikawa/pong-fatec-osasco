@@ -1,0 +1,8 @@
+*.class
+hs_err_pid*.log
+
+# O acervo local e os materiais de aula permanecem fora da publicacao do jogo.
+.historico/
+Exemplos/
+Roteiro_Autoestudo_Pong_Java.pdf
+requisitos_PONG.png
