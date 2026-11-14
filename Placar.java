@@ -2,17 +2,14 @@ import java.awt.Font;
 import java.awt.Graphics2D;
 
 /*
- * OITAVO ARQUIVO: OS PONTOS
- * Os dois contadores sao privados. Quem marca um ponto chama o metodo correto.
- * Quem desenha ou verifica a vitoria consulta os valores pelos metodos get.
- * Isso e encapsulamento: a classe controla como seus dados sao alterados.
- * reiniciar zera os dois lados. desenhar mostra os numeros no alto do campo.
+ * Esta classe guarda os pontos e oferece os metodos para aumentar ou zerar a contagem.
  */
 public class Placar {
     private int pontosJogador;
     private int pontosComputador;
 
     // A contagem muda por estas operacoes. O restante do jogo apenas consulta os valores.
+    // ++ aumenta a contagem em um ponto. O outro metodo faz o mesmo para o computador.
     public void marcarPontoJogador() { pontosJogador++; }
     public void marcarPontoComputador() { pontosComputador++; }
     public void reiniciar() { pontosJogador = 0; pontosComputador = 0; }

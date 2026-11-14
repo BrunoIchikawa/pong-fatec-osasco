@@ -3,21 +3,17 @@ import java.awt.event.WindowEvent;
 import javax.swing.JFrame;
 
 /*
- * SEGUNDO ARQUIVO: A JANELA
- * JFrame e uma janela pronta do Java. extends significa que JanelaJogo herda
- * essa base e acrescenta as escolhas do nosso jogo: titulo, campo e fechamento.
- * O campo fica dentro da janela. pack ajusta a janela ao tamanho desse campo.
- * EXIT_ON_CLOSE encerra o programa ao fechar. setResizable(false) fixa o tamanho.
- * Ao trocar de janela, limpamos as teclas para a raquete nao continuar andando.
- * serialVersionUID e um identificador da classe para o recurso do Java de salvar
- * objetos. Nosso jogo nao usa esse recurso para guardar partidas.
+ * Esta classe monta a janela e coloca o CampoJogo dentro dela.
+ * extends JFrame aproveita a base de janela que o Java ja oferece.
  */
 public final class JanelaJogo extends JFrame {
+    // Identificador usado pelo recurso Java de salvar objetos; nao salva a partida aqui.
     private static final long serialVersionUID = 1L;
 
     public JanelaJogo() {
         super("Pong | FATEC Osasco | Tecnicas de Programacao");
         CampoJogo campo = new CampoJogo();
+        // Fechar a janela tambem encerra o programa.
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setResizable(false);
         add(campo);

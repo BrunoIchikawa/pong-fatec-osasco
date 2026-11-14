@@ -3,16 +3,11 @@ import java.awt.Rectangle;
 import java.util.concurrent.ThreadLocalRandom;
 
 /*
- * QUINTO ARQUIVO: A BOLA
- * x e y guardam a posicao do canto da bola. O diametro define seu tamanho.
- * dx e quanto ela anda para os lados; dy e quanto ela anda para cima ou para baixo.
- * Na tela, y menor fica mais alto. Por isso dy negativo faz a bola subir.
- * mover soma essas velocidades a posicao. inverterX e inverterY trocam o sinal,
- * fazendo a bola voltar na direcao contraria depois de um contato.
- * private protege os dados: outras classes usam os metodos para trabalhar com a bola.
- * Os metodos get permitem consultar esses valores.
+ * A bola guarda sua posicao, seu tamanho e quanto anda em cada direcao.
  */
 public class Bola {
+    // private protege os dados; os metodos get permitem consultar seus valores.
+    // x cresce para a direita e y cresce para baixo. double permite casas decimais.
     private double x;
     private double y;
     private final int diametro;
@@ -33,6 +28,7 @@ public class Bola {
         velocidadeInicial = Math.abs(dx);
     }
 
+    // dx soma o passo horizontal; dy soma o vertical. Inverter o sinal muda a direcao.
     public void mover() { x += dx; y += dy; }
     public void inverterX() { dx = -dx; }
     public void inverterY() { dy = -dy; }
@@ -42,6 +38,7 @@ public class Bola {
         x = centroX - diametro / 2.0;
         y = centroY - diametro / 2.0;
         // Cada saque recupera a velocidade inicial e sorteia o lado e a inclinacao.
+        // O sorteio escolhe direita ou esquerda, mantendo a velocidade inicial.
         dx = ThreadLocalRandom.current().nextBoolean() ? velocidadeInicial : -velocidadeInicial;
         dy = ThreadLocalRandom.current().nextDouble(-velocidadeInicial, velocidadeInicial);
     }

@@ -1,12 +1,6 @@
 /*
- * ULTIMO ARQUIVO: OS TESTES
- * Cada teste prepara uma situacao conhecida, faz uma acao e confere o resultado.
- * Por exemplo: a bola sobe contra o teto; depois da atualizacao ela deve descer.
- * conferir recebe uma condicao. Se ela for falsa, o teste para e mostra a falha.
- * Nenhuma janela e aberta. Testamos diretamente os objetos e as regras da partida.
- * O total e 133 verificacoes, incluindo 100 saques para conferir os limites
- * das velocidades sorteadas. Isso nao significa 133 tipos diferentes de teste.
- * Os testes passam pela mesma regra usada durante o jogo.
+ * Cada cenario prepara uma situacao, executa uma acao e confere o resultado.
+ * Estes testes usam a regra do jogo sem abrir uma janela.
  */
 public class PongLogicTest {
     private static int total;
@@ -21,6 +15,7 @@ public class PongLogicTest {
         }
     }
 
+    // Uma condicao falsa provoca a falha com a descricao do que deveria acontecer.
     private static void conferir(boolean condicao, String descricao) {
         // A primeira divergencia encerra o teste com a descricao do comportamento esperado.
         if (!condicao) {
@@ -140,6 +135,7 @@ public class PongLogicTest {
         }
         bola = new Bola(390, 290, 20, 4, 1);
         // O sorteio pode variar. Os limites de velocidade continuam iguais em todos os saques.
+        // Cem das 133 verificacoes repetem o saque para conferir as velocidades sorteadas.
         for (int i = 0; i < 100; i++) {
             bola.reiniciar(400, 300);
             conferir(Math.abs(bola.getDx()) == 4 && Math.abs(bola.getDy()) <= 4,

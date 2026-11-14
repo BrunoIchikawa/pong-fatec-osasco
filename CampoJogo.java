@@ -16,20 +16,14 @@ import javax.swing.KeyStroke;
 import javax.swing.Timer;
 
 /*
- * TERCEIRO ARQUIVO: O CAMPO E OS COMANDOS
- * JPanel e uma area de desenho do Java. Nosso campo herda essa base.
- * Aqui criamos uma bola, duas raquetes, um placar e a regra da partida.
- * Ter esses objetos dentro do campo e o exemplo de composicao do projeto.
- * ActionListener permite receber os avisos do timer pelo metodo actionPerformed.
- * O timer chama esse metodo a cada 16 milissegundos, aproximadamente 60 vezes
- * por segundo. Ele atualiza o jogo e pede para desenhar a tela de novo.
- * As teclas pressionadas ficam em um conjunto, sem repetir a mesma tecla.
- * A tela inicial espera ESPACO. D escolhe a dificuldade antes do inicio.
- * O aviso serial e ignorado porque este painel nao salva partidas em arquivo.
+ * Este painel recebe as teclas, chama a atualizacao e desenha o jogo.
+ * extends JPanel aproveita a area de desenho oferecida pelo Java.
  */
+// O painel nao salva objetos em arquivo; por isso esse aviso especifico e ignorado.
 @SuppressWarnings("serial")
 public final class CampoJogo extends JPanel implements ActionListener {
     private static final long serialVersionUID = 1L;
+    // new cria os objetos. Os numeros definem posicao, tamanho e velocidade.
     private final Bola bola = new Bola(390, 290, 20, 4, 2);
     private final Raquete jogador = new Raquete(30, 250, 20, 100, 6, Partida.ALTURA);
     private final Raquete computador = new Raquete(750, 250, 20, 100, 3, Partida.ALTURA);
@@ -37,11 +31,15 @@ public final class CampoJogo extends JPanel implements ActionListener {
     // A regra recebe os mesmos objetos que desenho. Existe uma unica versao da partida.
     private final Partida partida = new Partida(bola, jogador, computador, placar);
     // Este timer acompanha o painel inteiro, inclusive depois de cada reinicio.
+    // 16 e o intervalo em milissegundos. this indica que este painel recebe os avisos.
     private final Timer timer = new Timer(16, this);
+    // O conjunto guarda quais teclas continuam pressionadas, sem repetir a mesma tecla.
     private final Set<String> pressionadas = new HashSet<>();
     private boolean aguardandoInicio = true;
 
+    // Este metodo tem o nome da classe: ele prepara cada campo novo que criamos.
     public CampoJogo() {
+        // A area de jogo mede 800 por 600 pixels, sem contar as bordas da janela.
         setPreferredSize(new Dimension(800, 600));
         setBackground(new Color(16, 22, 33));
         // Cada tecla tem entrada e saida. O movimento depende do estado entre esses eventos.
@@ -100,6 +98,7 @@ public final class CampoJogo extends JPanel implements ActionListener {
     }
 
     @Override
+    // O timer chega aqui repetidamente. As teclas escolhem o movimento desta atualizacao.
     public void actionPerformed(ActionEvent evento) {
         // Na abertura, o timer desenha a tela enquanto o jogador escolhe o nivel.
         if (!aguardandoInicio) {
@@ -117,6 +116,7 @@ public final class CampoJogo extends JPanel implements ActionListener {
         // Trabalho em uma copia para manter as configuracoes de desenho dentro deste metodo.
         Graphics2D g = (Graphics2D) graphics.create();
         try {
+            // Suaviza o desenho. As chamadas seguintes escolhem cores e desenham os objetos.
             g.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
             g.setColor(new Color(63, 77, 95));
             g.setStroke(new BasicStroke(2, BasicStroke.CAP_BUTT, BasicStroke.JOIN_MITER,
@@ -144,6 +144,7 @@ public final class CampoJogo extends JPanel implements ActionListener {
                 centralizar(g, "D: escolher nivel | IA " + partida.getNivel(), 315);
                 centralizar(g, "ESPACO: " + (aguardandoInicio ? "iniciar" : "jogar novamente"), 350);
             }
+        // Ao terminar o desenho, libero a copia usada para desenhar.
         } finally {
             g.dispose();
         }

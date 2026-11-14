@@ -1,15 +1,12 @@
 import javax.swing.SwingUtilities;
 
 /*
- * COMECO DA APRESENTACAO
- * O programa comeca pelo main. Ele pede ao Swing para abrir a JanelaJogo.
- * Swing e a parte do Java que usamos para montar a janela e receber as teclas.
- * invokeLater coloca essa abertura na fila de tarefas da tela.
- * As regras do jogo ficam em outras classes, por isso o main e pequeno.
+ * O main apenas abre a janela. As regras ficam na Partida.
  */
 public class Main {
     public static void main(String[] args) {
         // A janela nasce na mesma thread que recebe o teclado e atualiza o jogo.
+        // invokeLater coloca a abertura na fila de tarefas do Swing, que cuida da tela.
         SwingUtilities.invokeLater(() -> new JanelaJogo());
     }
 }

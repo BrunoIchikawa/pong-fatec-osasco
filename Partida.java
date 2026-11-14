@@ -1,18 +1,14 @@
 import java.awt.Rectangle;
 
 /*
- * QUARTO ARQUIVO: AS REGRAS
- * A partida recebe os mesmos objetos criados pelo campo e trabalha com eles.
- * Ela nao abre janela. Assim conseguimos testar as regras sem mostrar a tela.
- * atualizar faz uma rodada curta: le os comandos, move os objetos, verifica
- * os contatos e confere se alguem marcou ponto.
- * Estado indica se estamos JOGANDO ou se ja houve VITORIA.
- * As constantes guardam valores fixos: campo de 800 por 600 e meta de 9 pontos.
+ * Aqui ficam os movimentos, os contatos, os pontos e a vitoria.
+ * Esta classe usa os objetos do campo e pode funcionar sem abrir uma janela.
  */
 public class Partida {
     public static final int LARGURA = 800;
     public static final int ALTURA = 600;
     public static final int META = 9;
+    // enum lista os dois estados possiveis da partida.
     public enum Estado { JOGANDO, VITORIA }
 
     private final Bola bola;
@@ -24,6 +20,7 @@ public class Partida {
     private boolean iniciada;
     private String vencedor = "";
 
+    // Os parametros trazem os objetos do campo. this indica o dado deste objeto.
     public Partida(Bola bola, Raquete jogador, Raquete computador, Placar placar) {
         this.bola = bola;
         this.jogador = jogador;
@@ -44,9 +41,11 @@ public class Partida {
         computador.mover();
         bola.mover();
         // Primeiro retiro a bola do limite; o sinal da velocidade confirma a aproximacao.
+        // y zero e o teto; dy negativo significa que a bola esta subindo.
         if (bola.getY() <= 0 && bola.getDy() < 0) {
             bola.posicionar(bola.getX(), 0);
             bola.inverterY();
+        // No chao, considero a parte de baixo da bola, e nao apenas seu canto.
         } else if (bola.getY() + bola.getDiametro() >= ALTURA && bola.getDy() > 0) {
             bola.posicionar(bola.getX(), ALTURA - bola.getDiametro());
             bola.inverterY();
@@ -82,8 +81,10 @@ public class Partida {
         // Este metodo recebe o placar ja atualizado e prepara o proximo saque.
         // O saque central encerra esta saida lateral e impede contar o mesmo ponto outra vez.
         bola.reiniciar(LARGURA / 2, ALTURA / 2);
+        // META vale 9. Basta um dos lados atingir esse valor para terminar.
         if (placar.getPontosJogador() >= META || placar.getPontosComputador() >= META) {
             // Ao atingir nove pontos, guardo o vencedor e interrompo a logica pelo estado.
+            // A proxima chamada de atualizar retorna logo no inicio, mantendo tudo parado.
             estado = Estado.VITORIA;
             vencedor = placar.getPontosJogador() >= META ? "Jogador" : "Computador";
             jogador.parar();
